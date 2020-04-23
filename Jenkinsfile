@@ -15,6 +15,8 @@ podTemplate(cloud:'openshift', label: BUILD_TAG,
           // Running on NodeJS container...
 
           stage('Hello World') {
+              checkout scm 
+              sh "ls -alrt"
               echo "build: " + BUILD_TAG
               sh 'node -v'
           }
