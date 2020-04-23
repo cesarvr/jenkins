@@ -20,8 +20,6 @@ podTemplate(cloud:'openshift', label: BUILD_TAG,
               echo "build: " + BUILD_TAG
               sh 'node -v'
           }
-          /* More NodeJS related stages ... */
-
         }
 
     }
