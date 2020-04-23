@@ -13,7 +13,8 @@ podTemplate(cloud:'openshift', label: BUILD_TAG,
 
           stage('Hello World') {
               checkout scm 
-              sh "ls -alrt && env && env | grep PATH"
+              sh "export PATH=/opt/rh/rh-maven35/root/usr/bin:$PATH"
+              sh "ls -alrt "
               echo "build: " + BUILD_TAG
               sh 'mvn --version'
           }
