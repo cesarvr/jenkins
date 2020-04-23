@@ -1,0 +1,24 @@
+def IMAGE = 'registry.redhat.io/openshift3/jenkins-agent-maven-35-rhel7:v3.11'
+def CONTAINER_NAME = 'my_container'
+
+podTemplate(cloud:'openshift', label: BUILD_TAG,
+  containers: [
+      containerTemplate(name: CONTAINER_NAME, image: IMAGE,
+       ttyEnabled: true,
+       command: 'cat'),
+  ]) {
+
+    node(BUILD_TAG) {
+        container(CONTAINER_NAME) {
+
+          stage('Hello World') {
+              checkout scm 
+              sh "ls -alrt"
+              echo "build: " + BUILD_TAG
+              sh 'mvn --version'
+          }
+
+        }
+    }
+
+}
