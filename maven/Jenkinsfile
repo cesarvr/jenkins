@@ -13,7 +13,7 @@ podTemplate(cloud:'openshift', label: BUILD_TAG,
 
           stage('Hello World') {
               checkout scm 
-              sh "ls -alrt"
+              sh "ls -alrt && env && env | grep PATH"
               echo "build: " + BUILD_TAG
               sh 'mvn --version'
           }
