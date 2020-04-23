@@ -1,5 +1,5 @@
 def IMAGE = 'registry.redhat.io/openshift3/jenkins-agent-maven-35-rhel7:v3.11'
-def CONTAINER_NAME = 'my_container'
+def CONTAINER_NAME = 'my-container'
 
 podTemplate(cloud:'openshift', label: BUILD_TAG,
   containers: [
